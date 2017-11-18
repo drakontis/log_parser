@@ -15,15 +15,4 @@ describe Log do
       expect(log.entries.last).to eq entry_2
     end
   end
-
-  describe '#entries <<' do
-    it 'should add entries to log' do
-      log_entry = LogEntry.new(page: '/example', ip: '127.0.0.1')
-
-      subject.entries << log_entry
-      expect(subject.entries).to be_an Array
-      expect(subject.entries.count).to eq 1
-      expect(subject.entries.first).to eq log_entry
-    end
-  end
 end
