@@ -47,8 +47,10 @@ describe Log do
       entry_3 = LogEntry.new(page: '/example', ip: '127.0.0.3')
       entry_4 = LogEntry.new(page: '/example/2', ip: '127.0.0.2')
       entry_5 = LogEntry.new(page: '/example/2', ip: '127.0.0.2')
+      entry_6 = LogEntry.new(page: '/example', ip: '127.0.0.2')
+      entry_7 = LogEntry.new(page: '/example', ip: '127.0.0.2')
 
-      log_entries = [entry_1, entry_2, entry_3, entry_4, entry_5]
+      log_entries = [entry_1, entry_2, entry_3, entry_4, entry_5, entry_6, entry_7]
 
       result = Log.new(entries: log_entries).unique_views_per_page
 
@@ -56,7 +58,7 @@ describe Log do
 
       first_element = result.first
       expect(first_element.first).to eq '/example'
-      expect(first_element.last.count).to eq 2
+      expect(first_element.last.count).to eq 3
 
       second_element = result.last
       expect(second_element.first).to eq '/example/2'

@@ -10,6 +10,6 @@ class Log
   end
 
   def unique_views_per_page
-    entries.uniq{ |entry| entry.page && entry.ip }.group_by{ |entry| entry.page }.to_a.sort_by{ |obj| -obj.last.count }
+    entries.uniq{ |entry| "#{entry.page}-#{entry.ip}" }.group_by{ |entry| entry.page }.to_a.sort_by{ |obj| -obj.last.count }
   end
 end
